@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/prefer_view_height_48dp"
+    android:orientation="horizontal">
+    <!--menu前端为标题-->
+    <com.knowledge.mnlin.linemenuview.MarqueeTextView
+        android:id="@+id/tv_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/view_padding_margin_12dp"
+        android:ellipsize="marquee"
+        android:gravity="start|center_vertical"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        tools:text="对应的菜单信息"/>
+
+    <!--menu后面为可选择部分-->
+    <FrameLayout
+        android:id="@+id/fl_plugin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="0dp"
+        android:paddingStart="@dimen/view_padding_margin_8dp">
+        <!--使用单个TextView,文本右对齐-->
+        <TextView
+            android:id="@+id/tv_brief_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/view_padding_margin_12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical|end"
+            android:maxLines="1"
+            android:visibility="gone"
+            tools:text="右侧文本内容"/>
+
+        <!--使用开关按钮,可切换on/off状态-->
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/sc_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|end"
+            android:visibility="gone"/>
+
+        <!--使用携带了一个Radio的视图-->
+        <RadioButton
+            android:id="@+id/rb_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/selector_radio_checked"
+            android:checked="true"
+            android:gravity="center_vertical|end"
+            android:minHeight="@dimen/view_height_16dp"
+            android:minWidth="@dimen/view_height_16dp"
+            android:visibility="gone"/>
+
+        <!--使用单个图片,对于需要动态变化的图像,使用drawable属性会不方便,/选中/未选中-->
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|end"
+            android:src="@drawable/icon_choose_address"
+            android:visibility="gone"/>
+
+        <!--渐变的图片切换-->
+        <ImageView
+            android:id="@+id/icon_open_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|end"
+            android:src="@drawable/transition_close_open"
+            android:visibility="gone"/>
+    </FrameLayout>
+</merge>

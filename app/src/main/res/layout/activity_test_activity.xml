@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/layout_top_bar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/view_padding_margin_16dp"
+            android:paddingTop="@dimen/view_padding_margin_16dp">
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:id="@+id/lmv_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_for_calculation="off"
+                app:LineMenuView_menu="无插件"
+                app:LineMenuView_plugin="none"/>
+
+            <!--text插件则会包含brief信息-->
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_brief="简要信息"
+                app:LineMenuView_menu="文本形式"
+                app:LineMenuView_plugin="text"/>
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_brief="简要信息"
+                app:LineMenuView_brief_text_color="@color/blue"
+                app:LineMenuView_brief_text_size="@dimen/text_size_10sp"
+                app:LineMenuView_menu="文本大小/颜色/改变"
+                app:LineMenuView_menu_text_color="@color/yellow"
+                app:LineMenuView_menu_text_size="@dimen/text_size_large_18sp"
+                app:LineMenuView_plugin="text"/>
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_badge="@mipmap/mobile_black"
+                app:LineMenuView_brief="简要信息"
+                app:LineMenuView_menu="带上箭头形式"
+                app:LineMenuView_navigation="@drawable/icon_arrow_right"
+                app:LineMenuView_plugin="text"/>
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                app:LineMenuView_badge="@mipmap/mobile_black"
+                app:LineMenuView_navigation="@drawable/icon_arrow_right"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_brief="简要信息"
+                app:LineMenuView_icon="@mipmap/mobile_blue"
+                app:LineMenuView_menu="带icon的简要信息,且信息太长需要一直滚动滚动滚动滚动滚动滚动滚动滚动滚动滚动"
+                app:LineMenuView_plugin="text"/>
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_menu="切换模式"
+                app:LineMenuView_plugin="transition"
+                app:LineMenuView_transition="on"/>
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_menu="选中/未选中模式"
+                app:LineMenuView_plugin="select"/>
+
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_menu="radio显示模式"
+                app:LineMenuView_plugin="radio"
+                app:LineMenuView_radio="on"/>
+
+            <!--注意下划线-->
+            <com.knowledge.mnlin.linemenuview.LineMenuView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/view_padding_margin_12dp"
+                android:background="@color/white_background_5"
+                android:paddingEnd="@dimen/view_padding_margin_16dp"
+                android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_menu="switch显示模式"
+                app:LineMenuView_plugin="switch_"
+                app:LineMenuView_switch="on"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
