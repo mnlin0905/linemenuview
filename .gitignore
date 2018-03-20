@@ -10,3 +10,4 @@
 /app/release/
 /.idea/dbnavigator.xml
 /.idea/kotlinc.xml
+/.idea/vcs.xml

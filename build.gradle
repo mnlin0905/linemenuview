@@ -11,8 +11,9 @@ buildscript {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
 
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+        //gradle-bintray-plugin插件来上传到jcenter
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
     }
 }
 
@@ -22,11 +23,15 @@ allprojects {
         //https://jcenter.bintray.com
         jcenter()
         maven { url "https://jitpack.io" }
-        //maven { url "https://dl.bintray.com/lovingning/maven"}
         google()
+
+        //个人maven库
+        maven { url "https://dl.bintray.com/lovingning/maven" }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+

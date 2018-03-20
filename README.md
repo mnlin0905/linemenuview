@@ -1,167 +1,156 @@
-# Android框架
-
-**版本：1.0**
-
-
-具体介绍可参考博客：[博客CSDN地址](http://blog.csdn.net/lovingning/article/details/79508678)
+# LineMenuView
+[![License](https://img.shields.io/aur/license/yaourt.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
+[![Download](https://api.bintray.com/packages/lovingning/maven/linemenuview/images/download.svg) ](https://bintray.com/lovingning/maven/linemenuview/_latestVersion)
 
 
-**一些常用框架github地址:**
+## 一、引入依赖
+在项目**build.gradle**中添加依赖：
 
 ```
-[
-    {
-        name:'robotium',
-        introduce:'Android UI Testing',
-        github:'https://github.com/RobotiumTech/robotium'
-    },
-    {
-        name:'XRecyclerView',
-        introduce:'a RecyclerView that implements pullrefresh and loadingmore featrues.you can use it like a standard RecyclerView',
-        github:'https://github.com/jianghejie/XRecyclerView'
-    },
-    {
-        name:'CircleImageView',
-        introduce:'A circular ImageView for Android',
-        github:'https://github.com/hdodenhof/CircleImageView'
-    },
-    {
-        name:'SHSegmentControl',
-        introduce:'segmentcontrol widget for android',
-        github:'https://github.com/7heaven/SHSegmentControl'
-    },
-    {
-        name:'GridPasswordView',
-        introduce:'An android password view that looks like the pay password view in wechat app and alipay app',
-        github:'https://github.com/Jungerr/GridPasswordView'
-    },
-    {
-        name:'FlowLayout',
-        introduce:'Android流式布局，支持单选、多选等，适合用于产品标签等',
-        github:'https://github.com/hongyangAndroid/FlowLayout'
-    },
-    {
-        name:'RxJava',
-        introduce:'RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM',
-        github:'https://github.com/ReactiveX/RxJava'
-    },
-    {
-        name:'RxAndroid',
-        introduce:'RxJava bindings for Android',
-        github:'https://github.com/ReactiveX/RxAndroid'
-    },
-    {
-        name:'gson',
-        introduce:'A Java serialization/deserialization library to convert Java Objects into JSON and back',
-        github:'https://github.com/google/https://github.com/google/gson'
-    },
-    {
-        name:'retrofit',
-        introduce:'Type-safe HTTP client for Android and Java by Square, Inc.',
-        github:'https://github.com/square/retrofit'
-    },
-    {
-        name:'okhttp',
-        introduce:'An HTTP+HTTP/2 client for Android and Java applications.',
-        github:'https://github.com/square/okhttp'
-    },
-    {
-        name:'glide',
-        introduce:'An image loading and caching library for Android focused on smooth scrolling',
-        github:'https://github.com/bumptech/glide'
-    },
-    {
-        name:'dagger',
-        introduce:'A fast dependency injector for Android and Java.',
-        github:'https://github.com/square/dagger'
-    },
-    {
-        name:'butterknife',
-        introduce:'Bind Android views and callbacks to fields and methods.',
-        github:'https://github.com/JakeWharton/butterknife'
-    },
-    {
-        name:'logger',
-        introduce:'Simple, pretty and powerful logger for android',
-        github:'https://github.com/orhanobut/logger'
-    },
-    {
-        name:'AndroidUtilCode',
-        introduce:'Android developers should collect the following utils(updating)',
-        github:'https://github.com/Blankj/AndroidUtilCode'
-    },
-    {
-        name:'android-zxingLibrary',
-        introduce:'几行代码快速集成二维码扫描功能',
-        github:'https://github.com/yipianfengye/android-zxingLibrary'
-    },
-    {
-        name:'StatusBarUtil',
-        introduce:'A util for setting status bar style on Android App',
-        github:'https://github.com/laobie/StatusBarUtil'
-    },
-    {
-        name:'RxDownload',
-        introduce:'A multi-threaded download tool written with RxJava and Kotlin',
-        github:'https://github.com/ssseasonnn/RxDownload'
-    },
-    {
-        name:'Android-TextView-LinkBuilder',
-        introduce:'Insanely easy way to define clickable links within a TextView.',
-        github:'https://github.com/klinker24/Android-TextView-LinkBuilder'
-    },
-    {
-        name:'leakcanary',
-        introduce:'A memory leak detection library for Android and Java',
-        github:'https://github.com/square/leakcanary'
-    },
-    {
-        name:'stetho',
-        introduce:'Stetho is a debug bridge for Android applications, enabling the powerful Chrome Developer Tools and much more.',
-        github:'https://github.com/facebook/stetho'
-    },
-    {
-        name:'recyclerview-animators',
-        introduce:'An Android Animation library which easily add itemanimator to RecyclerView items',
-        github:'https://github.com/wasabeef/recyclerview-animators'
-    },
-    {
-        name:'PermissionsDispatcher',
-        introduce:'Simple annotation-based API to handle runtime permissions.',
-        github:'https://github.com/permissions-dispatcher/PermissionsDispatcher'
-    },
-    {
-        name:'glide-transformations',
-        introduce:'An Android transformation library providing a variety of image transformations for Glide',
-        github:'https://github.com/wasabeef/glide-transformations'
-    },
-    {
-        name:'TakePhoto',
-        introduce:'一款用于在Android设备上获取照片（拍照或从相册、文件中选择）、裁剪图片、压缩图片的开源工具库',
-        github:'https://github.com/crazycodeboy/TakePhoto'
-    },
-    {
-        name:'Android-PickerView',
-        introduce:'This is a picker view for android , support linkage effect, timepicker and optionspicker.（时间选择器、省市区三级联动）',
-        github:'https://github.com/Bigkoo/Android-PickerView'
-    },
-    {
-        name:'Android-ConvenientBanner',
-        introduce:'Simple and convenient banner, loop viewpager with 3D effects',
-        github:'https://github.com/saiwu-bigkoo/Android-ConvenientBanner'
-    },
-    {
-        name:'analytics',
-        introduce:'友盟统计',
-        github:null,
-        url:'http://dev.umeng.com/analytics/android-doc/integration'
-    },
-    {
-        name:'TBS',
-        introduce:'腾讯浏览服务',
-        url:'https://x5.tencent.com/tbs/guide/sdkInit.html'
+compile 'com.knowledge.mnlin:linemenuview:1.0.0'
+```
+
+## 二、 xml中添加布局文件
+
+如：
+
+```
+<com.knowledge.mnlin.linemenuview.LineMenuView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/view_padding_margin_12dp"
+    app:LineMenuView_badge="@mipmap/mobile_black"
+    app:LineMenuView_navigation="@drawable/icon_arrow_right"
+    android:background="@color/white_background_5"
+    android:paddingEnd="@dimen/view_padding_margin_16dp"
+    android:paddingStart="@dimen/view_padding_margin_16dp"
+    app:LineMenuView_brief="简要信息"
+    app:LineMenuView_icon="@mipmap/mobile_blue"
+    app:LineMenuView_menu="带icon的简要信息,且信息太长需要一直滚动滚动滚动滚动滚动滚动滚动滚动滚动滚动"
+    app:LineMenuView_plugin="text"/>
+
+<com.knowledge.mnlin.linemenuview.LineMenuView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/view_padding_margin_12dp"
+    android:background="@color/white_background_5"
+    android:paddingEnd="@dimen/view_padding_margin_16dp"
+    android:paddingStart="@dimen/view_padding_margin_16dp"
+    app:LineMenuView_menu="切换模式"
+    app:LineMenuView_plugin="transition"
+    app:LineMenuView_transition="on"/>
+```
+这里如果不需要主动设置效果，则并不需要定义id属性；
+
+LineMenuView自定义了很多属性值，具体属性值表示含义可以参考博客；这里列出所有属性值：
+
+```
+<!--单行菜单对应的参数：switch状态、menu文本、icon图标-->
+    <declare-styleable name="LineMenuView">
+        <!--插件类型-->
+        <attr name="LineMenuView_plugin" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="text" value="1"/>
+            <enum name="switch_" value="2"/>
+            <enum name="radio" value="3"/>
+            <enum name="select" value="4"/>
+            <enum name="transition" value="5"/>
+        </attr>
+        <attr name="LineMenuView_switch" format="enum">
+            <enum name="off" value="0"/>
+            <enum name="on" value="1"/>
+        </attr>
+        <!--选中/未选中-->
+        <attr name="LineMenuView_radio" format="enum">
+            <enum name="off" value="0"/>
+            <enum name="on" value="1"/>
+        </attr>
+        <!--开/关-->
+        <attr name="LineMenuView_transition" format="enum">
+            <enum name="off" value="0"/>
+            <enum name="on" value="1"/>
+        </attr>
+        <!--用于计算,default表示默认:只有在visible时才会纳入计算;on表示纳入计算,即便是不可见状态;off表示不纳入计算,即使是可见状态-->
+        <attr name="LineMenuView_for_calculation" format="enum">
+            <enum name="bypassed" value="0"/>
+            <enum name="on" value="1"/>
+            <enum name="off" value="2"/>
+        </attr>
+        <!--根据博客可以对应menu、brief、badge，navigation，icon表示的位置-->
+        <attr name="LineMenuView_badge" format="reference"/>
+        <attr name="LineMenuView_navigation" format="reference"/>
+        <attr name="LineMenuView_icon" format="reference"/>
+        <attr name="LineMenuView_brief" format="string"/>
+        <attr name="LineMenuView_menu" format="string"/>
+        <attr name="LineMenuView_brief_text_color" format="color"/>
+        <attr name="LineMenuView_menu_text_color" format="color"/>
+        <attr name="LineMenuView_brief_text_size" format="dimension"/>
+        <attr name="LineMenuView_menu_text_size" format="dimension"/>
+    </declare-styleable>
+```
+
+## 三、在Activity中实现LineMenuListener接口
+
+```
+public class TestActivityActivity Activity implements LineMenuView.LineMenuListener {
+
+    // ...其他逻辑
+
+    /**
+     * 点击左侧文本
+     *
+     * @param v 被点击到的v;此时应该是左侧的TextView
+     * @return 是否消费该点击事件, 如果返回true, 则performSelf将不会被调用
+     */
+    @Override
+    public boolean performClickLeft(TextView v) {
+        return false;
     }
-]
+
+    /**
+     * @param v 被点击到的v;此时应该是右侧的TextView
+     * @return 是否消费该点击事件, 如果返回true, 则performSelf将不会被调用
+     */
+    @Override
+    public boolean performClickRight(TextView v) {
+        return false;
+    }
+
+    /**
+     * @param v 被点击到的v;此时应该是该view自身:LineMenuView
+     */
+    @Override
+    public void performSelf(LineMenuView v) {
+        int position = ((int) v.getTag(LineMenuView.TAG_POSITION));
+        switch (position) {
+           //...
+        }
+    }
+}
 ```
+
+例如在performSelf方法中，已经通过tag获取到了被点击的控件所在的位置，直接进行逻辑判断处理即可。
+
+## 四、自定义布局
+
+自定义布局比较方便，直接修改静态属性值，改变布局文件即可。
+
+不过需要将原有的xml文件进行拷贝，然后再修改，保持整体结构和id值不要变化。
+
+```
+/**
+ * 位置信息情况
+ */
+public static final int TAG_POSITION = com.knowledge.mnlin.linemenuview.R.id.LINE_MENU_VIEW_TAG_POSITION;
+
+/**
+ * 布局文件
+ */
+public static final int LAYOUT_SELF = com.knowledge.mnlin.linemenuview.R.layout.layout_line_menu;
+```
+
+
+ 
+对于显示效果以及框架实现原理，可参考博客：[LineMenuView](http://blog.csdn.net/lovingning/article/details/79624457)
 
 

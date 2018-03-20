@@ -33,12 +33,12 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
     /**
      * 位置信息情况
      */
-    public static final int TAG_POSITION = R.id.LINE_MENU_VIEW_TAG_POSITION;
+    public static final int TAG_POSITION = com.knowledge.mnlin.linemenuview.R.id.LINE_MENU_VIEW_TAG_POSITION;
 
     /**
      * 布局文件
      */
-    public static final int LAYOUT_SELF = R.layout.layout_line_menu;
+    public static final int LAYOUT_SELF = com.knowledge.mnlin.linemenuview.R.layout.layout_line_menu;
 
     /**
      * 设置图片最大为36dp
