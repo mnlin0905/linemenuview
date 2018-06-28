@@ -8,12 +8,12 @@
     android:minHeight="@dimen/prefer_view_height_48dp"
     android:orientation="horizontal">
     <!--menu前端为标题-->
-    <com.knowledge.mnlin.linemenuview.MarqueeTextView
+    <com.knowledge.mnlin.linemenuview.MTextView
         android:id="@+id/tv_menu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:drawablePadding="@dimen/view_padding_margin_12dp"
+        android:drawablePadding="12dp"
         android:ellipsize="marquee"
         android:gravity="start|center_vertical"
         android:marqueeRepeatLimit="marquee_forever"
@@ -22,17 +22,16 @@
 
     <!--menu后面为可选择部分-->
     <FrameLayout
-        android:id="@+id/fl_plugin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="0dp"
-        android:paddingStart="@dimen/view_padding_margin_8dp">
+        android:paddingStart="8dp">
         <!--使用单个TextView,文本右对齐-->
         <TextView
             android:id="@+id/tv_brief_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="@dimen/view_padding_margin_12dp"
+            android:drawablePadding="12dp"
             android:ellipsize="end"
             android:gravity="center_vertical|end"
             android:maxLines="1"
@@ -55,8 +54,8 @@
             android:button="@drawable/selector_radio_checked"
             android:checked="true"
             android:gravity="center_vertical|end"
-            android:minHeight="@dimen/view_height_16dp"
-            android:minWidth="@dimen/view_height_16dp"
+            android:minHeight="16dp"
+            android:minWidth="16dp"
             android:visibility="gone"/>
 
         <!--使用单个图片,对于需要动态变化的图像,使用drawable属性会不方便,/选中/未选中-->

@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--软件功能菜单-->
-    <string-array name="activity_menu">
-        <item>版本更新</item>
-        <item>意见反馈</item>
-        <item>退出软件</item>
-    </string-array>
 </resources>

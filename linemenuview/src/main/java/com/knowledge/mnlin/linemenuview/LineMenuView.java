@@ -33,12 +33,12 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
     /**
      * 位置信息情况
      */
-    public static final int TAG_POSITION = com.knowledge.mnlin.linemenuview.R.id.LINE_MENU_VIEW_TAG_POSITION;
+    public static final int TAG_POSITION = R.id.LINE_MENU_VIEW_TAG_POSITION;
 
     /**
      * 布局文件
      */
-    public static final int LAYOUT_SELF = com.knowledge.mnlin.linemenuview.R.layout.layout_line_menu;
+    public static final int LAYOUT_SELF = R.layout.layout_line_menu;
 
     /**
      * 设置图片最大为36dp
@@ -60,7 +60,7 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
      * 左侧菜单按钮
      * 右侧消息菜单
      */
-    MarqueeTextView mTvMenu;
+    MTextView mTvMenu;
     TextView mTvBriefInfo;
     SwitchCompat mScSwitch;
     RadioButton mRbCheck;
@@ -349,13 +349,13 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
         return mTvBriefInfo.getText().toString();
     }
 
-    public LineMenuView setBrief(int brief) {
-        mTvBriefInfo.setText(String.valueOf(brief));
+    public LineMenuView setBrief(String brief) {
+        mTvBriefInfo.setText(brief);
         return this;
     }
 
-    public LineMenuView setBrief(String brief) {
-        mTvBriefInfo.setText(brief);
+    public LineMenuView setBrief(int brief) {
+        mTvBriefInfo.setText(String.valueOf(brief));
         return this;
     }
 
@@ -567,7 +567,9 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
          * @param v 被点击到的v;此时应该是左侧的TextView
          * @return 是否消费该点击事件, 如果返回true, 则performSelf将不会被调用
          */
-        boolean performClickLeft(TextView v);
+        default boolean performClickLeft(TextView v) {
+            return false;
+        }
 
         /**
          * 注：该放置主要针对 text 插件设计，但即便是其他插件模式，也可以通过 v.getTag()方法获取到位置信息
@@ -575,11 +577,15 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
          * @param v 被点击到的v;此时应该是右侧的TextView
          * @return 是否消费该点击事件, 如果返回true, 则performSelf将不会被调用
          */
-        boolean performClickRight(TextView v);
+        default boolean performClickRight(TextView v) {
+            return false;
+        }
 
         /**
          * @param v 被点击到的v;此时应该是该view自身:LineMenuView
          */
-        void performSelf(LineMenuView v);
+        default void performSelf(LineMenuView v) {
+
+        }
     }
 }

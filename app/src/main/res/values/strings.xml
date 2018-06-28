@@ -1,37 +1,15 @@
 <resources>
     <string name="app_name">LineMenuView</string>
-    <string name="app_version">V1.0.0</string>
 
     <!--description-->
     <string name="app_description">LineMenuView</string>
 
     <!--toolbar标签-->
-    <string name="label_select_function_activity">LineMenuView</string>
 
 
     <!--侧滑栏打开或者关闭-->
-    <string name="drawer_layout_open">打开</string>
-    <string name="drawer_layout_close">关闭</string>
 
     <!--action菜单功能-->
-    <string name="action_message">我的消息</string>
-    <string name="action_group_chat">发起群聊</string>
-    <string name="action_add_friends">添加朋友</string>
-    <string name="action_contacts">通信录</string>
-    <string name="action_setting">设置</string>
-    <string name="action_shopping_cart">购物车</string>
-    <string name="action_pre_sell">新品预售</string>
-    <string name="action_classification">分类</string>
-    <string name="action_more">更多</string>
-    <string name="action_secret">隐私</string>
-    <string name="action_save">保存</string>
-    <string name="action_delete">删除</string>
-    <string name="action_close">关闭</string>
-    <string name="action_service">客服</string>
-    <string name="action_edit">编辑</string>
-    <string name="action_search">搜索</string>
-    <string name="action_submit">提交</string>
-    <string name="action_finish">完成</string>
 
 
 </resources>

@@ -3,13 +3,13 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 27
+        versionCode 105
+        versionName "1.0.5"
     }
 
     buildTypes {
@@ -19,13 +19,18 @@ android {
         }
     }
 
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:support-annotations:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:support-annotations:27.1.1'
+    compile 'com.android.support:support-v13:27.1.1'
 }
 
 //gradle-bintray-plugin插件来上传到jcenter
@@ -48,7 +53,7 @@ bintray {
     }
 }
 
-version = "1.0.0"
+version = "1.0.5"
 
 group = "com.knowledge.mnlin"
 
