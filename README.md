@@ -7,14 +7,14 @@
 在项目**build.gradle**中添加依赖：
 
 ```
-compile 'com.knowledge.mnlin:linemenuview:1.0.0'
+compile 'com.knowledge.mnlin:linemenuview:latest.release'
 ```
 
 ## 二、 xml中添加布局文件
 
 如：
 
-```
+``````
 <com.knowledge.mnlin.linemenuview.LineMenuView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

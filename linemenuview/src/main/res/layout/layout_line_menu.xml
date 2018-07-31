@@ -9,7 +9,7 @@
     android:orientation="horizontal">
     <!--menu前端为标题-->
     <com.knowledge.mnlin.linemenuview.MTextView
-        android:id="@+id/tv_menu"
+        android:id="@+id/tv_menu_line_menu_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -28,7 +28,7 @@
         android:paddingStart="8dp">
         <!--使用单个TextView,文本右对齐-->
         <TextView
-            android:id="@+id/tv_brief_info"
+            android:id="@+id/tv_brief_info_line_menu_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="12dp"
@@ -40,7 +40,7 @@
 
         <!--使用开关按钮,可切换on/off状态-->
         <android.support.v7.widget.SwitchCompat
-            android:id="@+id/sc_switch"
+            android:id="@+id/sc_switch_line_menu_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|end"
@@ -48,7 +48,7 @@
 
         <!--使用携带了一个Radio的视图-->
         <RadioButton
-            android:id="@+id/rb_check"
+            android:id="@+id/rb_check_line_menu_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:button="@drawable/selector_radio_checked"
@@ -60,7 +60,7 @@
 
         <!--使用单个图片,对于需要动态变化的图像,使用drawable属性会不方便,/选中/未选中-->
         <ImageView
-            android:id="@+id/iv_image"
+            android:id="@+id/iv_image_line_menu_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|end"
@@ -69,7 +69,7 @@
 
         <!--渐变的图片切换-->
         <ImageView
-            android:id="@+id/icon_open_close"
+            android:id="@+id/icon_open_close_line_menu_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|end"

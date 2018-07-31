@@ -102,16 +102,18 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
         inflate(context, LAYOUT_SELF, this);
         setParam();
         super.setOnClickListener(this);
-        mTvMenu = findViewById(R.id.tv_menu);
-        mTvBriefInfo = findViewById(R.id.tv_brief_info);
-        mScSwitch = findViewById(R.id.sc_switch);
-        mRbCheck = findViewById(R.id.rb_check);
-        mIvImage = findViewById(R.id.iv_image);
-        mIconOpenClose = findViewById(R.id.icon_open_close);
+        mTvMenu = findViewById(R.id.tv_menu_line_menu_view);
+        mTvBriefInfo = findViewById(R.id.tv_brief_info_line_menu_view);
+        mScSwitch = findViewById(R.id.sc_switch_line_menu_view);
+        mRbCheck = findViewById(R.id.rb_check_line_menu_view);
+        mIvImage = findViewById(R.id.iv_image_line_menu_view);
+        mIconOpenClose = findViewById(R.id.icon_open_close_line_menu_view);
 
         //处理逻辑
         initData();
     }
+
+
 
     /**
      * 设置类自身必要的参数
@@ -267,8 +269,8 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
 
         mIvImage.getDrawable().setVisible(false, false);
 
-        //如果当前view所在的context对象声明了该接口,那么就直接进行绑定
-        if (getContext() instanceof LineMenuListener && setListenerIsSelf()) {
+        //如果当前view所在的context对象声明了该接口,那么就直接进行绑定,如果未纳入计数体系,则不会自动添加listener
+        if (getContext() instanceof LineMenuListener && setListenerIsSelf() && calculation != 2) {
             setOnClickListener((LineMenuListener) getContext());
         }
 
@@ -349,13 +351,13 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
         return mTvBriefInfo.getText().toString();
     }
 
-    public LineMenuView setBrief(String brief) {
-        mTvBriefInfo.setText(brief);
+    public LineMenuView setBrief(int brief) {
+        mTvBriefInfo.setText(String.valueOf(brief));
         return this;
     }
 
-    public LineMenuView setBrief(int brief) {
-        mTvBriefInfo.setText(String.valueOf(brief));
+    public LineMenuView setBrief(String brief) {
+        mTvBriefInfo.setText(brief);
         return this;
     }
 
@@ -419,6 +421,20 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
     }
 
     /**
+     * 获取menu菜单文字
+     */
+    public CharSequence getMenuText() {
+        return mTvMenu.getText();
+    }
+
+    /**
+     * 获取brief
+     */
+    public CharSequence getBriefText() {
+        return mTvBriefInfo.getText();
+    }
+
+    /**
      * 如果child的calculation为on,则纳入统计
      * 如果child的calculation为default,且child可见,则纳入统计
      * 否则不会纳入统计
@@ -469,7 +485,6 @@ public class LineMenuView extends LinearLayout implements Cloneable, View.OnClic
     }
 
     //////////////////////////////////////////设置属性值方法-end
-
     /**
      * 如果当前有对自身的监听事件
      * 则在手指触摸屏幕时就保存手指坐标
