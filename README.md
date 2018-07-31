@@ -3,6 +3,8 @@
 [![Download](https://api.bintray.com/packages/lovingning/maven/linemenuview/images/download.svg) ](https://bintray.com/lovingning/maven/linemenuview/_latestVersion)
 
 
+> 版本信息说明, 见: **versions.md**
+
 ## 一、引入依赖
 在项目**build.gradle**中添加依赖：
 
