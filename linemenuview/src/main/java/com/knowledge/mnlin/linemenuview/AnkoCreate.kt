@@ -48,7 +48,7 @@ private fun getColor(ctx: Context, @ColorRes res: Int): Int {
 private fun ViewManager.lmv(menuText: String? = null, menuIcon: Drawable? = null, @DrawableRes menuIconRes: Int? = null, @Dimension(unit = PX) menuTextSize: Int? = null, @DimenRes menuTextSizeRes: Int? = null, @ColorInt menuTextColor: Int? = null, @ColorRes menuTextColorRes: Int? = null, init: (LineMenuView.() -> Unit) = {}, pluginInt: LineMenuView.(ctx: Context) -> Unit): LineMenuView {
     return ankoView({ ctx ->
         LineMenuView(ctx, null, 0).apply {
-            setMenu(menuText)
+            this.menuText = menuText
             menuIcon?.let {
                 setIcon(it)
             }
@@ -99,7 +99,7 @@ fun ViewManager.lmv_text(
 
     return this.lmv(menuText, menuIcon, menuIconRes, menuTextSize, menuTextSizeRes, menuTextColor, menuTextColorRes, init) { ctx ->
         setPlugin(1)
-        setBrief(briefText)
+        this.briefText = briefText
 
         briefBadge?.let {
             setBadge(it)
@@ -143,7 +143,7 @@ fun ViewManager.lmv_switch(
 
     return this.lmv(menuText, menuIcon, menuIconRes, menuTextSize, menuTextSizeRes, menuTextColor, menuTextColorRes, init) {
         setPlugin(2)
-        setSwitch(switch)
+        this.switch = switch
     }
 }
 
@@ -162,7 +162,7 @@ fun ViewManager.lmv_radio(
 
     return this.lmv(menuText, menuIcon, menuIconRes, menuTextSize, menuTextSizeRes, menuTextColor, menuTextColorRes, init) {
         setPlugin(3)
-        setRadio(radio)
+        this.radio = radio
     }
 }
 
@@ -178,10 +178,9 @@ fun ViewManager.lmv_select(
 
         //自定义初始化方法
         init: (LineMenuView.() -> Unit) = {}): LineMenuView {
-
     return this.lmv(menuText, menuIcon, menuIconRes, menuTextSize, menuTextSizeRes, menuTextColor, menuTextColorRes, init) {
         setPlugin(4)
-        setRightSelect(select)
+        this.rightSelect = rightSelect
     }
 }
 
@@ -200,7 +199,7 @@ fun ViewManager.lmv_transition(
 
     return this.lmv(menuText, menuIcon, menuIconRes, menuTextSize, menuTextSizeRes, menuTextColor, menuTextColorRes, init) {
         setPlugin(5)
-        setTransition(transition)
+        this.transition = transition
     }
 }
 

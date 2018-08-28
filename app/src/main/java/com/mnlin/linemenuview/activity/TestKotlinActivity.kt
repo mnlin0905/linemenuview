@@ -48,9 +48,8 @@ class TestKotlinActivity : BaseActivity<TestActivityPresenter>(), TestActivityCo
                     topPadding = dp16
 
                     //无插件
-                    lmv_none(menuText = "无插件") {
+                    var a = lmv_none(menuText = "无插件") {
                         setCalculation(2)
-                        common_padding_bg()
 
                         setOnClickListener(object : LineMenuListener {
                             override fun performClickLeft(v: TextView): Boolean {
@@ -71,50 +70,42 @@ class TestKotlinActivity : BaseActivity<TestActivityPresenter>(), TestActivityCo
                     }.lparams(width = matchParent) { topMargin = dp12 }
 
                     //文本形式
-                    lmv_text(menuText = "文本形式", briefText = "简要信息") {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                    lmv_text(menuText = "文本形式", briefText = "简要信息").lparams(width = matchParent) { topMargin = dp12 }
 
                     //文本大小/颜色/改变
                     lmv_text(menuText = "文本大小/颜色/改变", menuTextSizeRes = R.dimen.text_size_large_18sp, menuTextColorRes = R.color.yellow,
-                            briefText = "简要信息", briefTextColorRes = R.color.blue, briefTextSize = dimen(R.dimen.text_size_10sp)) {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                            briefText = "简要信息", briefTextColorRes = R.color.blue, briefTextSize = dimen(R.dimen.text_size_10sp)).lparams(width = matchParent) { topMargin = dp12 }
 
                     //带上箭头形式
                     lmv_text(menuText = "带上箭头形式",
-                            briefText = "简要信息", briefBadgeRes = R.mipmap.mobile_black, briefNavigation = dispatchGetDrawable(R.drawable.icon_arrow_right)) {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                            briefText = "简要信息", briefBadgeRes = R.mipmap.mobile_black, briefNavigation = dispatchGetDrawable(R.drawable.icon_arrow_right))
+                            .lparams(width = matchParent) { topMargin = dp12 }
 
                     //带icon的简要信息,且信息太长需要一直滚动滚动滚动滚动滚动滚动滚动滚动滚动滚动
                     lmv_text(menuText = "带icon的简要信息,且信息太长需要一直滚动滚动滚动滚动滚动滚动滚动滚动滚动滚动", menuIconRes = R.mipmap.mobile_blue,
-                            briefText = "简要信息", briefBadgeRes = R.mipmap.mobile_black, briefNavigation = dispatchGetDrawable(R.drawable.icon_arrow_right)) {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                            briefText = "简要信息", briefBadgeRes = R.mipmap.mobile_black, briefNavigation = dispatchGetDrawable(R.drawable.icon_arrow_right))
+                            .lparams(width = matchParent) { topMargin = dp12 }
 
                     //切换模式
                     lmv_transition(menuText = "切换模式",
-                            transition = true) {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                            transition = true).lparams(width = matchParent) { topMargin = dp12 }
 
                     //选中/未选中模式
                     lmv_select(menuText = "选中/未选中模式",
-                            select = false) {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                            select = false).lparams(width = matchParent) { topMargin = dp12 }
 
                     //radio显示模式
                     lmv_radio(menuText = "选中/未选中模式",
-                            radio = true) {
-                        common_padding_bg()
-                    }.lparams(width = matchParent) { topMargin = dp12 }
+                            radio = true).lparams(width = matchParent) { topMargin = dp12 }
 
                     //radio显示模式
                     lmv_switch(menuText = "switch显示模式",
                             switch = true).lparams(width = matchParent) { topMargin = dp12;leftMargin = dp16;rightMargin = dp16 }
-                }.lparams(width = matchParent)
+                }.lparams(width = matchParent).applyRecursively {
+                    if (it is LineMenuView) {
+                        it.common_padding_bg()
+                    }
+                }
             }.lparams(width = matchParent, height = matchParent)
         }
 
@@ -129,39 +120,37 @@ class TestKotlinActivity : BaseActivity<TestActivityPresenter>(), TestActivityCo
      * @param v 被点击到的v;此时应该是该view自身:LineMenuView
      */
     override fun performSelf(v: LineMenuView) {
-        val position = v.getTag(LMVConfigs.TAG_POSITION) as Int
-        when (position) {
+        when (v.getTag(LMVConfigs.TAG_POSITION) as Int) {
         //因为第一个LineMenuView设置了LineMenuView_for_calculation为off，表示不计数，因此会是-1，且不会影响它后面LineMenuView的序号
         //但是，因为开始时候给mLmvFirst重新设定了onClickListener方法，因此点击它时根本不会进入该方法（performSelf内）
 
-            0//文本形式
-            -> showToast("文本形式：位置 0")
-            1//可改变字体颜色大小的文本形式
-            -> showToast("可改变字体颜色大小的文本形式: 位置 1")
-            2//带箭头（navigation）、badge图标的形式
-            -> showToast("带箭头、badge图标的形式 : 位置 2")
-            3//带箭头、icon、badge，且menu信息滚动的形式
-            -> showToast("带箭头、icon、badge，且menu信息滚动的形式: 位置 3")
-            4//transition模式
-            -> {
+            0 -> showToast("文本形式：位置 0").empty(comment = "文本形式")
+            1 -> showToast("可改变字体颜色大小的文本形式: 位置 1").empty(comment = "可改变字体颜色大小的文本形式")
+            2 -> showToast("带箭头、badge图标的形式 : 位置 2").empty(comment = "带箭头（navigation）、badge图标的形式")
+            3 -> showToast("带箭头、icon、badge，且menu信息滚动的形式: 位置 3").empty(comment = "带箭头、icon、badge，且menu信息滚动的形式")
+            4 -> empty(comment = "transition模式").also {
                 showToast("transition模式: 位置 4")
-                v.setTransition(!v.getTransition())
+                v.transition = !v.transition
             }
-            5//select模式
-            -> {
+            5 -> empty(comment = "select模式").also {
                 showToast("select模式: 位置 5")
-                v.setRightSelect(!v.rightSelect)
+                v.rightSelect = !v.rightSelect
             }
-            6//radio模式
-            -> {
+            6 -> empty(comment = "radio模式").also {
                 showToast("radio模式: 位置 6")
-                v.setRadio(!v.radio)
+                v.radio = !v.radio
             }
-            7//switch_模式
-            -> {
+            7 -> empty(comment = "switch_模式").also {
                 showToast("switch_模式: 位置 7")
-                v.setSwitch(!v.switch)
+                v.switch = !v.switch
             }
         }
     }
+}
+
+/**
+ * 注释器
+ */
+inline fun <T> T.empty(comment: String): T {
+    return this
 }

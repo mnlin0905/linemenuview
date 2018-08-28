@@ -3,11 +3,9 @@
 # V_2.0.0
 
  * 语言切换为kotlin
- * setMenuColor方法删除,可使用setMenuTextColor方法
  * [MTextView](linemenuview/src/main/java/com/knowledge/mnlin/linemenuview/MTextView.java)类只针对包内可见
  * LineMenuListener监听器添加注解(适应kotlin调用),同时修改performClickRight方法参数(TextView ->  View),接口不再是内部类
- * 移除 setBrief(brief: Int) 方法,避免与setBrief(brief: String?)混淆
- * 移除 getBrief方法(事实上并不经常使用),改用 getBriefText()
+ * 可供操作的方法进行较多改变,如setBrief修改为setBriefText等,具体可直接参考源码:[LineMenuView.kt](linemenuview/src/main/java/com/knowledge/mnlin/linemenuview/LineMenuView.kt)
  * 获取position时使用的id与layout等默认资源名,转移到**LMVConfigs类**中,方便进行全局修改
  * 添加anko使用,(lmv_***)系列,源码位于**[AnkoCreate.kt](linemenuview/src/main/java/com/knowledge/mnlin/linemenuview/AnkoCreate.kt)**
  

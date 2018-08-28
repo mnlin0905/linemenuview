@@ -40,7 +40,7 @@ open class LineMenuView
      * 左侧菜单按钮
      * 右侧消息菜单
      */
-    private var mTvMenu: MTextView
+    private var mTvMenu: TextView
     private var mTvBriefInfo: TextView
     private var mScSwitch: SwitchCompat
     private var mRbCheck: RadioButton
@@ -52,7 +52,7 @@ open class LineMenuView
     /**
      * true表示on状态
      */
-    private var transition: Boolean = false
+    private var _transition: Boolean = false
 
     /**
      * 是否纳入计算体系
@@ -64,27 +64,6 @@ open class LineMenuView
      */
     private var calculation: Int = 0
 
-    val switch: Boolean
-        get() = mScSwitch.isChecked
-
-    val radio: Boolean
-        get() = mRbCheck.isChecked
-
-    val rightSelect: Boolean
-        get() = mIvImage.visibility == View.VISIBLE
-
-    /**
-     * 获取menu菜单文字
-     */
-    val menuText: CharSequence
-        get() = mTvMenu.text
-
-    /**
-     * 获取brief
-     */
-    val briefText: CharSequence
-        get() = mTvBriefInfo.text
-
     /**
      * 如果child的calculation为on,则纳入统计
      * 如果child的calculation为default,且child可见,则纳入统计
@@ -92,7 +71,7 @@ open class LineMenuView
      *
      * @return 返回当前LineMenuView所在的兄弟布局(同一个viewParent)
      */
-    public fun friendsWithSelf(): List<LineMenuView> {
+    fun friendsWithSelf(): List<LineMenuView> {
         val childs = LinkedList<LineMenuView>()
 
         val parent = parent as ViewGroup?
@@ -116,7 +95,7 @@ open class LineMenuView
      *
      * @return 返回当前LineMenuView所在的兄弟布局(同一个viewParent)
      */
-    public fun friendsEveryOne(): List<LineMenuView> {
+    fun friendsEveryOne(): List<LineMenuView> {
         val childs = LinkedList<LineMenuView>()
 
         val parent = parent as ViewGroup?
@@ -186,7 +165,7 @@ open class LineMenuView
                     1 -> {
                         val drawable = mIconOpenClose.drawable as TransitionDrawable
                         drawable.isCrossFadeEnabled = true
-                        transition = true
+                        _transition = true
                         drawable.startTransition(0)
                     }
                 }
@@ -329,21 +308,6 @@ open class LineMenuView
         return this
     }
 
-    fun setSwitch(checked: Boolean): LineMenuView {
-        mScSwitch.isChecked = checked
-        return this
-    }
-
-    fun setRadio(checked: Boolean): LineMenuView {
-        mRbCheck.isChecked = checked
-        return this
-    }
-
-    fun setMenu(title: String?): LineMenuView {
-        mTvMenu.text = title
-        return this
-    }
-
     fun setIcon(d: Drawable?): LineMenuView {
         if (d != null) {
             d.setBounds(0, 0, Math.min(d.minimumWidth, MAX_PICTURE_SIZE), Math.min(d.minimumHeight, MAX_PICTURE_SIZE))
@@ -360,11 +324,6 @@ open class LineMenuView
 
     fun setMenuTextSize(unit: Int, size: Int): LineMenuView {
         mTvMenu.setTextSize(unit, size.toFloat())
-        return this
-    }
-
-    fun setBrief(brief: String?): LineMenuView {
-        mTvBriefInfo.text = brief
         return this
     }
 
@@ -391,32 +350,61 @@ open class LineMenuView
         return this
     }
 
-    fun setRightSelect(select: Boolean): LineMenuView {
-        mIvImage.visibility = if (select) View.VISIBLE else View.INVISIBLE
-        return this
-    }
-
-    fun getTransition(): Boolean {
-        return transition
-    }
-
     /**
-     * @param toggle true表示显示打开的开关
-     * @return 返回自身
+     * 后端变量
+     *
+     * switch切换状态
+     * radio状态
+     * select状态
+     * transition状态
+     *
+     * menuText 文本信息
+     * briefText 文本
      */
-    fun setTransition(toggle: Boolean): LineMenuView {
-        if (toggle != transition) {
-            val drawable = mIconOpenClose.drawable as TransitionDrawable
-            drawable.isCrossFadeEnabled = true
-            if (toggle) {
-                drawable.startTransition(DEFAULT_ANIMATOR_TIME.toInt())
-            } else {
-                drawable.reverseTransition(DEFAULT_ANIMATOR_TIME.toInt())
-            }
-            transition = toggle
+    var switch: Boolean
+        get() = mScSwitch.isChecked
+        set(value) {
+            mScSwitch.isChecked = value
         }
-        return this
-    }
+
+    var radio: Boolean
+        get() = mRbCheck.isChecked
+        set(value) {
+            mRbCheck.isChecked = value
+        }
+
+    var rightSelect: Boolean
+        get() = mIvImage.visibility == View.VISIBLE
+        set(value) {
+            mIvImage.visibility = if (value) View.VISIBLE else View.INVISIBLE
+        }
+
+    var transition: Boolean
+        get() = _transition
+        set(value) {
+            if (value != _transition) {
+                val drawable = mIconOpenClose.drawable as TransitionDrawable
+                drawable.isCrossFadeEnabled = true
+                if (value) {
+                    drawable.startTransition(DEFAULT_ANIMATOR_TIME.toInt())
+                } else {
+                    drawable.reverseTransition(DEFAULT_ANIMATOR_TIME.toInt())
+                }
+                _transition = value
+            }
+        }
+
+    var menuText: String?
+        get() = mTvMenu.text.toString()
+        set(value) {
+            mTvMenu.text = value
+        }
+
+    var briefText: String?
+        get() = mTvBriefInfo.text.toString()
+        set(value) {
+            mTvBriefInfo.text = value
+        }
 
     //////////////////////////////////////////设置属性值方法-end
 
