@@ -24,5 +24,6 @@ public final class ARouterConst {
     public static final String Activity_SelectFunctionActivity = "/activity/SelectFunctionActivity";
     public static final String Activity_SearchFilterActivity = "/activity/SearchFilterActivity";
     public static final String Fragment_WalletFragment = "/fragment/WalletFragment";
-    public static final String Activity_TestActivityActivity="/activity/TestActivityActivity";
+    public static final String Activity_TestKotlinActivity="/activity/TestKotlinActivity";
+    public static final String Activity_TestJavaActivity="/activity/TestJavaActivity";
 }

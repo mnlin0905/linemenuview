@@ -81,14 +81,18 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
      * @return 获取布局文件
      */
     @LayoutRes
-    protected abstract int getContentViewId();
+    protected int getContentOrViewId(){
+        return 0;
+    }
 
     /**
      * 初始化数据
      *
      * @param savedInstanceState 已存储对象
      */
-    protected abstract void initData(Bundle savedInstanceState);
+    protected void initData(Bundle savedInstanceState){
+
+    }
 
     @Override
     @SuppressWarnings("all")
@@ -115,8 +119,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         ActivityUtil.setStatusBarColor(this, getResources().getColor(R.color.transparent));
 
         //添加布局
-        if(getContentViewId()!=0){
-            setContentView(getContentViewId());
+        if(getContentOrViewId()!=0){
+            setContentView(getContentOrViewId());
         }
         if ((PLUGIN_FLAGS & PLUGIN_BUTTER_KNIFE) == PLUGIN_BUTTER_KNIFE) {
             ButterKnife.bind(this);

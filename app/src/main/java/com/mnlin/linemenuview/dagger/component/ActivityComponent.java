@@ -1,6 +1,7 @@
 package com.mnlin.linemenuview.dagger.component;
 
-import com.mnlin.linemenuview.activity.TestActivityActivity;
+import com.mnlin.linemenuview.activity.TestJavaActivity;
+import com.mnlin.linemenuview.activity.TestKotlinActivity;
 import com.mnlin.linemenuview.dagger.module.ActivityModule;
 import com.mnlin.linemenuview.dagger.scope.PerActivity;
 
@@ -14,5 +15,6 @@ import dagger.Component;
 @PerActivity
 @Component(modules = ActivityModule.class,dependencies = ApplicationComponent.class)
 public interface ActivityComponent {
-    void inject(TestActivityActivity testActivityActivity);
+    void inject(TestKotlinActivity activity);
+    void inject(TestJavaActivity activity);
 }

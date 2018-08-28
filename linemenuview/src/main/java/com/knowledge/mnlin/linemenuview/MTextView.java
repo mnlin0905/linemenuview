@@ -11,7 +11,7 @@ import android.util.AttributeSet;
  * 可以实现跑马灯效果的TextView
  */
 
-public class MTextView extends AppCompatTextView {
+class MTextView extends AppCompatTextView {
     public MTextView(Context context) {
         this(context, null);
     }

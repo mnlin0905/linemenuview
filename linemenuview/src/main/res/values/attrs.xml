@@ -33,21 +33,25 @@
             <enum name="off" value="0"/>
             <enum name="on" value="1"/>
         </attr>
+
         <!--用于计算,default表示默认:只有在visible时才会纳入计算;on表示纳入计算,即便是不可见状态;off表示不纳入计算,即使是可见状态-->
         <attr name="LineMenuView_for_calculation" format="enum">
             <enum name="bypassed" value="0"/>
             <enum name="on" value="1"/>
             <enum name="off" value="2"/>
         </attr>
+
+        <!--brief部分-->
         <attr name="LineMenuView_badge" format="reference"/>
         <attr name="LineMenuView_navigation" format="reference"/>
-        <attr name="LineMenuView_icon" format="reference"/>
         <attr name="LineMenuView_brief" format="string"/>
-        <attr name="LineMenuView_menu" format="string"/>
         <attr name="LineMenuView_brief_text_color" format="color"/>
-        <attr name="LineMenuView_menu_text_color" format="color"/>
         <attr name="LineMenuView_brief_text_size" format="dimension"/>
+
+        <!--menu部分-->
+        <attr name="LineMenuView_icon" format="reference"/>
+        <attr name="LineMenuView_menu" format="string"/>
+        <attr name="LineMenuView_menu_text_color" format="color"/>
         <attr name="LineMenuView_menu_text_size" format="dimension"/>
     </declare-styleable>
-
 </resources>

@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,14 +74,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/view_padding_margin_12dp"
-                app:LineMenuView_badge="@mipmap/mobile_black"
-                app:LineMenuView_navigation="@drawable/icon_arrow_right"
                 android:background="@color/white_background_5"
                 android:paddingEnd="@dimen/view_padding_margin_16dp"
                 android:paddingStart="@dimen/view_padding_margin_16dp"
+                app:LineMenuView_badge="@mipmap/mobile_black"
                 app:LineMenuView_brief="简要信息"
                 app:LineMenuView_icon="@mipmap/mobile_blue"
                 app:LineMenuView_menu="带icon的简要信息,且信息太长需要一直滚动滚动滚动滚动滚动滚动滚动滚动滚动滚动"
+                app:LineMenuView_navigation="@drawable/icon_arrow_right"
                 app:LineMenuView_plugin="text"/>
 
             <com.knowledge.mnlin.linemenuview.LineMenuView

@@ -2,6 +2,16 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
+//dokka注释
+apply plugin: "org.jetbrains.dokka"
+
+//kotlin - dagger
+apply plugin: "kotlin-kapt"
+
+//kotlin依赖
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion 27
 
@@ -29,6 +39,12 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:support-annotations:27.1.1'
     compile 'com.android.support:support-v13:27.1.1'
+
+    //kotlin
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    //anko
+    api "org.jetbrains.anko:anko:$anko_version"
 }
 
 //gradle-bintray-plugin插件来上传到jcenter
@@ -51,7 +67,7 @@ bintray {
     }
 }
 
-version = "1.1.0"
+version = "2.0.0"
 
 group = "com.knowledge.mnlin"
 
