@@ -5,14 +5,12 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.TransitionDrawable
 import android.support.annotation.ColorInt
 import android.support.annotation.IntRange
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SwitchCompat
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.Gravity
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import com.knowledge.mnlin.linemenuview.LMVConfigs.*
 import java.util.*
@@ -263,9 +261,56 @@ open class LineMenuView
          */
         post {
             //如果当前view所在的context对象声明了该接口,那么就直接进行绑定,如果未纳入计数体系,则不会自动添加listener
-            if (context is LineMenuListener && setListenerIsSelf() && calculation != 2 && this.listener == null) {
-                setOnClickListener(context as LineMenuListener)
+            if (setListenerIsSelf() && calculation != 2 && this.listener == null) {
+                // 如果 context 满足,则设置为 context
+                val fragments = (context as FragmentActivity).supportFragmentManager.fragments
+
+                //指定应该谁做listener
+                var target: Any? = context
+
+                //查找是否应该设置为fragment
+                for (fragment in fragments) {
+                    val parent = fragments[0].view
+                    if (isParentChild(parent, this) && fragment is LineMenuListener) {
+                        target = fragment
+                        break
+                    }
+                }
+
+                //如果目标是LineMenuListener子类,则设置为监听器
+                if (target is LineMenuListener) {
+                    setOnClickListener(target)
+                }
             }
+        }
+    }
+
+    /**
+     * 判断两个view是否构成子父节点关系
+     */
+    private fun isParentChild(parent: View?, child: View): Boolean {
+        //如果是同一个对象,也算是有父子关系
+        if (parent === child) {
+            return true
+        } else if (parent is ViewGroup) {
+            //父节点
+            var child_parent: ViewParent? = child.parent
+            while (true) {
+                //找到了父类为parent
+                if (child_parent === parent) {
+                    return true
+                }
+
+                //找不到目标父类
+                if (child_parent == null) {
+                    return false
+                }
+
+                //重置
+                child_parent = child_parent.parent
+            }
+        } else {
+            return false
         }
     }
 
@@ -333,7 +378,8 @@ open class LineMenuView
     }
 
     fun setNavigation(drawable: Drawable): LineMenuView {
-        val compoundDrawables = mTvBriefInfo.compoundDrawables
+        drawable.setBounds(0, 0, Math.min(drawable.minimumWidth, MAX_PICTURE_SIZE), Math.min(drawable.minimumHeight, MAX_PICTURE_SIZE))
+        val compoundDrawables = mTvMenu.compoundDrawables
         mTvBriefInfo.setCompoundDrawables(compoundDrawables[0], compoundDrawables[1], drawable, compoundDrawables[3])
         return this
     }
@@ -406,6 +452,12 @@ open class LineMenuView
             mTvBriefInfo.text = value
         }
 
+    /**
+     * 提供内部 menu 与 brief 快速访问形式
+     */
+    val menu = mTvMenu
+    val brief = mTvBriefInfo
+
     //////////////////////////////////////////设置属性值方法-end
 
     /**
@@ -449,16 +501,22 @@ open class LineMenuView
         val setPosition = setTagPosition(parent as ViewGroup)
         val position = friendsWithSelf().indexOf(this)
         if (clickX <= dividerX) {
-            mTvMenu.setTag(TAG_POSITION, if (setPosition) position else -1)
+            if (setPosition) {
+                mTvMenu.setTag(TAG_POSITION, position)
+            }
             consume = listener!!.performClickLeft(mTvMenu)
         } else {
-            mTvBriefInfo.setTag(TAG_POSITION, if (setPosition) position else -1)
+            if (setPosition) {
+                mTvBriefInfo.setTag(TAG_POSITION, position)
+            }
             consume = listener!!.performClickRight(mTvBriefInfo)
         }
 
         //如果都没有被消费,则默认由performSelf来处理
         if (!consume) {
-            this.setTag(TAG_POSITION, if (setPosition) position else -1)
+            if (setPosition) {
+                this.setTag(TAG_POSITION, position)
+            }
             listener!!.performSelf(this)
         }
     }

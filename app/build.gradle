@@ -281,7 +281,8 @@ dependencies {
     //download
     compile 'zlc.season:rxdownload3:1.2.0'
 
-    api project(':linemenuview')
+   // api project(':linemenuview')
+//    compile 'com.knowledge.mnlin:linemenuview:2.0.1'
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"

@@ -1,6 +1,19 @@
 # LineMenuView更新记录
 
-# V_2.0.0
+# V_2.0.3
+
+ * 添加menu与brief控件的快速获取方式:
+    ```
+        val menu = mTvMenu
+        val brief = mTvBriefInfo
+    ```
+ * 如果Linemenuview控件处于Fragment中,默认会先将Listener添加到Fragment对象
+
+# V_2.0.2
+
+ * 修复navigation图标以资源文件形式传入时未设置bounds的问题
+
+# V_2.0.0/V_2.0.1
 
  * 语言切换为kotlin
  * [MTextView](linemenuview/src/main/java/com/knowledge/mnlin/linemenuview/MTextView.java)类只针对包内可见
