@@ -1,5 +1,10 @@
 # LineMenuView更新记录
 
+# V_2.0.4
+
+ * 修改监听器绑定时间为:界面显示之后:onAttachedToWindow
+ * 修复多Fragment时,监听器出现异常绑定的情况 
+
 # V_2.0.3
 
  * 添加menu与brief控件的快速获取方式:

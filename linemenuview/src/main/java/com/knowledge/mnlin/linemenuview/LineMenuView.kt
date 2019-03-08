@@ -116,7 +116,6 @@ open class LineMenuView
         //加载布局
         View.inflate(context, LAYOUT_SELF, this)
         setParam()
-        super.setOnClickListener(this)
         mTvMenu = findViewById(R.id.tv_menu_line_menu_view)
         mTvBriefInfo = findViewById(R.id.tv_brief_info_line_menu_view)
         mScSwitch = findViewById(R.id.sc_switch_line_menu_view)
@@ -255,31 +254,38 @@ open class LineMenuView
         mIvImage.drawable.setVisible(false, false)
 
         params.recycle()
+    }
 
-        /**
-         * 延迟调用set监听
-         */
-        post {
-            //如果当前view所在的context对象声明了该接口,那么就直接进行绑定,如果未纳入计数体系,则不会自动添加listener
-            if (setListenerIsSelf() && calculation != 2 && this.listener == null) {
-                // 如果 context 满足,则设置为 context
-                val fragments = (context as FragmentActivity).supportFragmentManager.fragments
+    /**
+     * 当在界面上时，再进行监听添加
+     */
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
 
-                //指定应该谁做listener
-                var target: Any? = context
+        //当费编辑模式，并且监听器不存在情况下，再行添加监听器
+        if (!isInEditMode && listener == null) {
+            post {
+                //如果当前view所在的context对象声明了该接口,那么就直接进行绑定,如果未纳入计数体系,则不会自动添加listener
+                if (setListenerIsSelf() && calculation != 2 && this.listener == null) {
+                    // 如果 context 满足,则设置为 context
+                    val fragments = (context as FragmentActivity).supportFragmentManager.fragments
 
-                //查找是否应该设置为fragment
-                for (fragment in fragments) {
-                    val parent = fragments[0].view
-                    if (isParentChild(parent, this) && fragment is LineMenuListener) {
-                        target = fragment
-                        break
+                    //指定应该谁做listener
+                    var target: Any? = context
+
+                    //查找是否应该设置为fragment
+                    for (fragment in fragments) {
+                        val parent = fragment.view
+                        if (isParentChild(parent, this) && fragment is LineMenuListener) {
+                            target = fragment
+                            break
+                        }
                     }
-                }
 
-                //如果目标是LineMenuListener子类,则设置为监听器
-                if (target is LineMenuListener) {
-                    setOnClickListener(target)
+                    //如果目标是LineMenuListener子类,则设置为监听器
+                    if (target is LineMenuListener) {
+                        setOnClickListener(target)
+                    }
                 }
             }
         }
@@ -547,9 +553,10 @@ open class LineMenuView
     }
 
     /**
-     * 重写父类的onclick处理方法
+     * 重载父类的onclick处理方法
      */
     public fun setOnClickListener(listener: LineMenuListener?) {
+        super.setOnClickListener(if (listener != null) this else null)
         this.listener = listener
     }
 }
